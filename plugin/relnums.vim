@@ -3,3 +3,24 @@
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
+
+
+" Toggle with <C-n>
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+
+" Return to absolute when focus is lost
+
+au FocusLost * :set number
+au FocusGained * :set relativenumber
+
+
